@@ -6,6 +6,9 @@
       <button class="btn btn-primary" (click)="onAddServer()">
         Add Server
       </button>
+      <br />
+      <h3>App Status:</h3>
+      {{ appStatus | async }}
       <!-- Use Pipes on looped data in ngFor as well: -->
       <ul class="list-group">
         <li

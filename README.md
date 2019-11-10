@@ -12,6 +12,7 @@ docs: (https://angular.io/api?query=pipe)
 
 - uppercase
 - date
+- async
 
 #### Example of builtin pipe:
 
@@ -145,7 +146,7 @@ set a second parameter in the @Pipe decorator in the pipe class: { ..., pure: fa
           }
           ```
 
-          - html template with filter input and pipe on the ngFor loop:
+       - html template with filter input and pipe on the ngFor loop:
 
               ```
               <input type="text" [(ngModel)]="filteredStatus" />
@@ -167,3 +168,22 @@ set a second parameter in the @Pipe decorator in the pipe class: { ..., pure: fa
                 </li>
             </ul>
             ```
+
+### ASYNC PIPES:
+
+- Use the built-in `async` pipe on the output data (which would be a promise) in the html template:
+
+- When used with Observables, the pipe would subscribe to them automatically
+
+- Example in html:
+  `<h3>App Status:</h3> {{ appStatus | async }}`
+- In TS component class:
+  ```javascript
+  export class AppComponent {
+    // simulated async call to api for testing async filters:
+    appStatus = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("stable");
+      }, 2000);
+    });
+  ```
